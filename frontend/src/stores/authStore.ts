@@ -83,6 +83,15 @@ export const useAuthStore = defineStore('auth', () => {
       if (result.code === 200 && result.data) {
         setToken(result.data.token)
         setUser(result.data.user)
+        
+        // 登录成功后，强制重新加载云端提示词配置
+        try {
+          const { promptConfigManager } = await import('@/config/prompts')
+          await promptConfigManager.forceReloadFromCloud()
+        } catch (error) {
+          console.error('登录后加载云端配置失败:', error)
+        }
+        
         return true
       } else {
         return false
@@ -113,6 +122,15 @@ export const useAuthStore = defineStore('auth', () => {
       if (result.code === 200 && result.data) {
         setToken(result.data.token)
         setUser(result.data.user)
+        
+        // 登录成功后，强制重新加载云端提示词配置
+        try {
+          const { promptConfigManager } = await import('@/config/prompts')
+          await promptConfigManager.forceReloadFromCloud()
+        } catch (error) {
+          console.error('登录后加载云端配置失败:', error)
+        }
+        
         return true
       } else {
         return false
@@ -248,6 +266,9 @@ export const useAuthStore = defineStore('auth', () => {
     // 清除本地状态
     setToken(null)
     setUser(null)
+    
+    // 清除sessionStorage中的会话标记，确保下次登录重新加载云端配置
+    sessionStorage.removeItem('yprompt_config_session_loaded')
     
     // 清除所有应用相关的 localStorage 数据
     const keysToRemove = [

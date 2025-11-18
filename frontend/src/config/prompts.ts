@@ -461,6 +461,13 @@ export class PromptConfigManager {
    */
   public async loadFromCloud(): Promise<boolean> {
     try {
+      // 检查是否已登录（有token）
+      const token = localStorage.getItem('yprompt_token')
+      if (!token) {
+        console.log('[PromptConfig] 未登录，跳过云端加载')
+        return false
+      }
+      
       // 检查本次会话是否已加载过（使用sessionStorage，关闭浏览器后失效）
       const sessionLoaded = sessionStorage.getItem('yprompt_config_session_loaded')
       if (sessionLoaded === 'true') {
