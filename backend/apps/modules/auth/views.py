@@ -225,6 +225,12 @@ async def local_register(request):
     注意：生产环境建议限制注册，或要求管理员审核
     """
     try:
+        if not getattr(request.app.config, 'REGISTRATION_ENABLED', False):
+            return json({
+                'code': 403,
+                'message': '当前已关闭注册，请联系管理员'
+            })
+        
         data = request.json
         username = data.get('username', '').strip()
         password = data.get('password', '')
@@ -456,7 +462,7 @@ async def get_auth_config(request):
                 'linux_do_client_id': request.app.config.LINUX_DO_CLIENT_ID if is_linux_do_enabled else '',
                 'linux_do_redirect_uri': request.app.config.LINUX_DO_REDIRECT_URI if is_linux_do_enabled else '',
                 'local_auth_enabled': True,  # 本地认证始终可用
-                'registration_enabled': True  # 是否允许注册（可配置）
+                'registration_enabled': bool(getattr(request.app.config, 'REGISTRATION_ENABLED', False))
             }
         })
         

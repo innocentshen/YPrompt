@@ -13,6 +13,7 @@ ENV YPROMPT_HOST=127.0.0.1
 # 默认管理员账号配置（可在docker run时通过-e覆盖）
 ENV ADMIN_USERNAME=admin
 ENV ADMIN_PASSWORD=admin123
+ENV REGISTRATION_ENABLED=false
 
 # 数据目录统一配置（所有持久化数据都在/app/data下）
 ENV CACHE_PATH=/app/data/cache

@@ -11,6 +11,7 @@ export LOG_PATH=${LOG_PATH:-/app/data/logs}
 # 默认管理员账号配置
 export ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
 export ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
+export REGISTRATION_ENABLED=${REGISTRATION_ENABLED:-false}
 
 # 健康检查配置
 export HEALTH_CHECK_INTERVAL=${HEALTH_CHECK_INTERVAL:-30}
@@ -28,6 +29,7 @@ echo "- 缓存目录: ${CACHE_PATH}"
 echo "- 日志目录: ${LOG_PATH}"
 echo "- 健康检查间隔: ${HEALTH_CHECK_INTERVAL}秒"
 echo "- 管理员用户名: ${ADMIN_USERNAME}"
+echo "- 开放用户注册: ${REGISTRATION_ENABLED}"
 echo "========================================"
 
 # 创建必要的目录（统一在/app/data下）

@@ -80,7 +80,11 @@
         </div>
 
         <!-- 注册表单（弹窗） -->
-        <div v-if="showRegister" class="modal-overlay" @click="showRegister = false">
+        <div
+          v-if="showRegister && authConfig.registration_enabled"
+          class="modal-overlay"
+          @click="showRegister = false"
+        >
           <div class="modal-content" @click.stop>
             <div class="modal-header">
               <h2>注册新账号</h2>
@@ -158,7 +162,7 @@ const authConfig = ref({
   linux_do_client_id: '',
   linux_do_redirect_uri: '',
   local_auth_enabled: true,
-  registration_enabled: true
+  registration_enabled: false
 })
 
 // 表单数据
@@ -185,6 +189,9 @@ const fetchAuthConfig = async () => {
     const config = await authStore.getAuthConfig()
     if (config) {
       authConfig.value = config
+      if (!config.registration_enabled) {
+        showRegister.value = false
+      }
     }
   } catch (error) {
     console.error('获取认证配置失败:', error)
@@ -233,6 +240,12 @@ const handleLocalLogin = async () => {
 
 // 注册新账号
 const handleRegister = async () => {
+  if (!authConfig.value.registration_enabled) {
+    errorMessage.value = '当前暂未开放注册，请联系管理员'
+    showRegister.value = false
+    return
+  }
+  
   errorMessage.value = ''
   isSubmitting.value = true
 

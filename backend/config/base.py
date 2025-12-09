@@ -35,6 +35,9 @@ class BaseConfig(object):
     DEFAULT_ADMIN_USERNAME = 'admin'
     DEFAULT_ADMIN_PASSWORD = 'admin123'
     DEFAULT_ADMIN_NAME = '管理员'
+    
+    # 是否允许本地注册，默认关闭
+    REGISTRATION_ENABLED = False
 
     ACCESS_LOG = False
 

@@ -69,6 +69,7 @@ docker run -d \
   -e LINUX_DO_CLIENT_ID=your_client_id \
   -e LINUX_DO_CLIENT_SECRET=your_client_secret \
   -e LINUX_DO_REDIRECT_URI=https://yourdomain.com/auth/callback \
+  -e REGISTRATION_ENABLED=false \
   ghcr.io/fish2018/yprompt:latest
 ```
 
@@ -95,6 +96,7 @@ services:
       - LINUX_DO_CLIENT_ID=your_client_id
       - LINUX_DO_CLIENT_SECRET=your_client_secret
       - LINUX_DO_REDIRECT_URI=https://yourdomain.com/auth/callback
+      - REGISTRATION_ENABLED=false
 ```
 
 启动：
@@ -145,6 +147,7 @@ docker-compose up -d
 |------|--------|------|
 | `ADMIN_USERNAME` | `admin` | 默认管理员用户名 |
 | `ADMIN_PASSWORD` | `admin123` | 默认管理员密码 |
+| `REGISTRATION_ENABLED` | `false` | 是否允许用户自助注册（`true/false`） |
 
 ### 健康检查配置
 
