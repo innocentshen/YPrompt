@@ -1,56 +1,57 @@
 # -*- coding: utf-8 -*-
+import os
 
 class BaseConfig(object):
-    """配置基类"""
+    """配置基类 - 支持环境变量覆盖"""
 
-    DEBUG = True
+    DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
 
-    # JWT秘钥
-    SECRET_KEY = 'intramirror'
-    
+    # JWT秘钥（生产环境必须通过环境变量设置）
+    SECRET_KEY = os.getenv('SECRET_KEY', 'intramirror')
+
     # Linux.do OAuth配置
-    LINUX_DO_CLIENT_ID = ''
-    LINUX_DO_CLIENT_SECRET = ''
-    LINUX_DO_REDIRECT_URI = ''
-    
+    LINUX_DO_CLIENT_ID = os.getenv('LINUX_DO_CLIENT_ID', '')
+    LINUX_DO_CLIENT_SECRET = os.getenv('LINUX_DO_CLIENT_SECRET', '')
+    LINUX_DO_REDIRECT_URI = os.getenv('LINUX_DO_REDIRECT_URI', '')
+
     # ==========================================
     # 数据库配置
     # ==========================================
     # 数据库类型: 'sqlite' 或 'mysql'
-    DB_TYPE = 'sqlite'
-    
+    DB_TYPE = os.getenv('DB_TYPE', 'sqlite')
+
     # SQLite配置
-    SQLITE_DB_PATH = '../data/yprompt.db'
-    
+    SQLITE_DB_PATH = os.getenv('SQLITE_DB_PATH', '../data/yprompt.db')
+
     # MySQL配置（当DB_TYPE='mysql'时使用）
-    DB_HOST = 'localhost'
-    DB_USER = 'root'
-    DB_PASS = ''
-    DB_NAME = 'yprompt'
-    DB_PORT = 3306
-    
+    DB_HOST = os.getenv('DB_HOST', 'localhost')
+    DB_USER = os.getenv('DB_USER', 'root')
+    DB_PASS = os.getenv('DB_PASS', '')
+    DB_NAME = os.getenv('DB_NAME', 'yprompt')
+    DB_PORT = int(os.getenv('DB_PORT', '3306'))
+
     # ==========================================
     # 默认管理员账号配置（仅首次初始化时使用）
     # ==========================================
-    DEFAULT_ADMIN_USERNAME = 'admin'
-    DEFAULT_ADMIN_PASSWORD = 'admin123'
-    DEFAULT_ADMIN_NAME = '管理员'
-    
-    # 是否允许本地注册，默认关闭
-    REGISTRATION_ENABLED = False
+    DEFAULT_ADMIN_USERNAME = os.getenv('DEFAULT_ADMIN_USERNAME', 'admin')
+    DEFAULT_ADMIN_PASSWORD = os.getenv('DEFAULT_ADMIN_PASSWORD', 'admin123')
+    DEFAULT_ADMIN_NAME = os.getenv('DEFAULT_ADMIN_NAME', '管理员')
 
-    ACCESS_LOG = False
+    # 是否允许本地注册，默认关闭
+    REGISTRATION_ENABLED = os.getenv('REGISTRATION_ENABLED', 'false').lower() == 'true'
+
+    ACCESS_LOG = os.getenv('ACCESS_LOG', 'false').lower() == 'true'
 
     # 服务worker数量
-    WORKERS = 1
+    WORKERS = int(os.getenv('WORKERS', '1'))
 
     # 跨域相关
     # 是否启动跨域功能
-    ENABLE_CORS = False
+    ENABLE_CORS = os.getenv('ENABLE_CORS', 'true').lower() == 'true'
     CORS_SUPPORTS_CREDENTIALS = True
 
     # redis配置
-    REDIS_CON = "redis://127.0.0.1:6379/2"
+    REDIS_CON = os.getenv('REDIS_CON', 'redis://127.0.0.1:6379/2')
 
     # 日志配置，兼容sanic内置log库
     LOGGING_INFO_FILE = '../data/logs/backend/info.log'

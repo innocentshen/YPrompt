@@ -1,0 +1,32 @@
+2025-12-11 18:21:19,540 | INFO | Sanic v23.12.1
+2025-12-11 18:21:19,541 | INFO | Goin' Fast @ http://0.0.0.0:8888
+2025-12-11 18:21:19,541 | INFO | app: apps
+2025-12-11 18:21:19,542 | INFO | mode: production, single worker
+2025-12-11 18:21:19,542 | INFO | server: sanic, HTTP/1.1
+2025-12-11 18:21:19,542 | INFO | python: 3.11.9
+2025-12-11 18:21:19,542 | INFO | platform: Windows-10-10.0.26100-SP0
+2025-12-11 18:21:19,542 | INFO | auto-reload: enabled
+2025-12-11 18:21:19,543 | INFO | packages: sanic-routing==23.12.0, sanic-ext==23.12.0
+2025-12-11 18:21:21,716 | INFO | Sanic Extensions:
+2025-12-11 18:21:21,716 | INFO |   > injection [0 dependencies; 0 constants]
+2025-12-11 18:21:21,717 | INFO |   > openapi [http://0.0.0.0:8888/docs]
+2025-12-11 18:21:21,717 | INFO |   > http 
+2025-12-11 18:21:21,748 | INFO | 📦 初始化数据库: sqlite
+2025-12-11 18:21:21,748 | INFO | 📁 SQLite数据库路径: ../data/yprompt.db
+2025-12-11 18:21:21,795 | INFO | ✅ SQLite连接成功: ../data/yprompt.db
+2025-12-11 18:21:21,798 | INFO | 📦 SQLite数据库为空，开始初始化...
+2025-12-11 18:21:21,907 | INFO | ✅ SQLite表结构初始化完成
+2025-12-11 18:21:22,126 | INFO | ✅ 默认管理员账号创建成功: admin / admin123
+2025-12-11 18:21:22,126 | INFO | ✅ 数据库初始化成功: sqlite
+2025-12-11 18:22:45,594 | INFO | ✅ 本地用户登录成功: username=admin, id=1
+2025-12-11 18:22:45,595 | INFO | ✅ 本地用户登录成功: username=admin, id=1
+2025-12-11 18:32:28,111 | INFO | Sanic Extensions:
+2025-12-11 18:32:28,111 | INFO |   > injection [0 dependencies; 0 constants]
+2025-12-11 18:32:28,111 | INFO |   > openapi [http://0.0.0.0:8888/docs]
+2025-12-11 18:32:28,111 | INFO |   > http 
+2025-12-11 18:32:28,137 | INFO | 📦 初始化数据库: sqlite
+2025-12-11 18:32:28,137 | INFO | 📁 SQLite数据库路径: ../data/yprompt.db
+2025-12-11 18:32:28,148 | INFO | ✅ SQLite连接成功: ../data/yprompt.db
+2025-12-11 18:32:28,149 | INFO | ✅ SQLite数据库已存在，跳过表结构初始化
+2025-12-11 18:32:28,553 | INFO | ✅ 管理员账号配置正确: admin
+2025-12-11 18:32:28,553 | INFO | ✅ 数据库初始化成功: sqlite
